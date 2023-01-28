@@ -113,7 +113,7 @@
 					
 				
 					
-						<a class="jianshu" href="#" 
+						<a class="jianshu" href="file:///D:/Hexo-Blog/blog-demo/MrLiResume/MrLi.html" 
 												title="简书" target="_blank"><i class="icon-jianshu"></i></a>
 					
 				
@@ -173,7 +173,7 @@
 					
 						
 						<a class="jianshu" target="_blank" 
-							href="#" title="简书"><i class="icon-jianshu"></i></a>
+							href="file:///D:/Hexo-Blog/blog-demo/MrLiResume/MrLi.html" title="简书"><i class="icon-jianshu"></i></a>
 						
 					
 				</div>
@@ -236,23 +236,10 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h6 id="在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error-listen-EADDRINUSE-address-already-in-use-3000-Error-listen-EADDRINUSE-address-already-in-use-4000"><a href="#在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error-listen-EADDRINUSE-address-already-in-use-3000-Error-listen-EADDRINUSE-address-already-in-use-4000" class="headerlink" title="在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error: listen EADDRINUSE: address already in use :::3000/Error: listen EADDRINUSE: address already in use :::4000"></a>在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error: listen EADDRINUSE: address already in use :::3000/Error: listen EADDRINUSE: address already in use :::4000</h6><p>意思就是 3000/4000 端口被占用了，其实解决方案很简单。</p>
-<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol>
-<li>打开 cmd</li>
-<li>输入 <code>netstat -nao | findstr 3000</code> 或 netstat -nao | findstr 4000 回车执行：查询哪个程序占用的 3000 /4000端口（如果占用其他端口，把后面的3000/4000换成占用的那个端口号查询即可）；<br><img src="https://img-blog.csdnimg.cn/2020041515145277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1hIX2ppbmc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-</ol>
-<p>可以看到 PID为 13508 的这个进程占用了3000/4000端口</p>
-<blockquote>
-<p>如果想进一步知道该的进程的具体内容，可以使用如下命令： <code>tasklist | findstr 13508</code><br>如果不想查看跳过即可</p>
-</blockquote>
-<ol>
-<li>终止占用该端口号的程序：执行 <code>taskkill /pid 13508</code> （13508 就是上面的 PID 的值）</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/20200415152011743.png" alt="在这里插入图片描述"></p>
-<ol>
-<li>如果报错，提示无法终止该 PID 的进程，那个执行 <code>taskkill/F /pid 13508</code>（强制杀死该进程）</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/20200415152137835.png" alt="在这里插入图片描述"><br>成功终止冲突的端口号。</p>
-
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3>
+    
+    <a class="article-more-a" href="/2023/01/28/%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/#more">more >></a>
+    
     
 
     
@@ -265,6 +252,10 @@
     
     
 
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/01/28/%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
+    </p>
     
 
     
