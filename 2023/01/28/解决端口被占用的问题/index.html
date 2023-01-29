@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200415152011743.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200415152137835.png">
 <meta property="article:published_time" content="2023-01-28T09:19:06.058Z">
-<meta property="article:modified_time" content="2023-01-28T11:51:18.125Z">
+<meta property="article:modified_time" content="2023-01-29T02:18:25.505Z">
 <meta property="article:author" content="Mr Li">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020041515145277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1hIX2ppbmc=,size_16,color_FFFFFF,t_70">
@@ -61,7 +61,7 @@
       
 
 
-<div class="overlay" style="background: #4d4d4d;"></div>
+<div class="overlay" style="background: #0028617a;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -132,7 +132,7 @@
       
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #0028617a"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -258,7 +258,7 @@
     <h6 id="在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error-listen-EADDRINUSE-address-already-in-use-3000-Error-listen-EADDRINUSE-address-already-in-use-4000"><a href="#在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error-listen-EADDRINUSE-address-already-in-use-3000-Error-listen-EADDRINUSE-address-already-in-use-4000" class="headerlink" title="在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error: listen EADDRINUSE: address already in use :::3000/Error: listen EADDRINUSE: address already in use :::4000"></a>在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error: listen EADDRINUSE: address already in use :::3000/Error: listen EADDRINUSE: address already in use :::4000</h6><p>意思就是 3000/4000 端口被占用了，其实解决方案很简单。</p>
 <h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><span id="more"></span>1. 打开 cmd
 <ol start="2">
-<li>输入 <code>netstat -nao | findstr 3000</code> 或 netstat -nao | findstr 4000 回车执行：查询哪个程序占用的 3000 /4000端口（如果占用其他端口，把后面的3000/4000换成占用的那个端口号查询即可）；<br><img src="https://img-blog.csdnimg.cn/2020041515145277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1hIX2ppbmc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>输入 <code>netstat -nao | findstr 3000</code> 或 <code>netstat -nao | findstr 4000</code> 回车执行：查询哪个程序占用的 3000 /4000端口（如果占用其他端口，把后面的3000/4000换成占用的那个端口号查询即可）；<br><img src="https://img-blog.csdnimg.cn/2020041515145277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1hIX2ppbmc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
 </ol>
 <p>可以看到 PID为 13508 的这个进程占用了3000/4000端口</p>
 <blockquote>
@@ -590,11 +590,40 @@
   </div>
 
   
+<script type="text/javascript" src="/plugins/TweenMax/TweenMax.min.js"></script>
+<script type="text/javascript" src="/plugins/TweenMax/HoverImg.js"></script>
+
+<script>
+
+
+  var hoverEffect = {
+    "subNav": ".left-col .social a"
+  }
+
+
+  for (var x in hoverEffect) {
+    // 初始化data-img属性值
+    let $em = document.querySelectorAll(hoverEffect[x]);
+    $em.forEach(($a) => {
+      //console.log($a.href);
+      if (isImageType($a.href)) {
+        $a.setAttribute("data-img", $a.href)
+      }
+    })
+    // 实现悬停元素预览图片效果
+    let $a = document.querySelectorAll(hoverEffect[x] + "[data-img]");
+    $a.forEach(($em) => {
+      new HoverImgFx1($em)
+    })
+  }
+
+</script>
+
   
 <script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
 <script>
   POWERMODE.colorful = true; // make power mode colorful
-  POWERMODE.shake = false; // turn off shake
+  POWERMODE.shake = true; // turn off shake
   document.body.addEventListener('input', POWERMODE);
 </script>
 
@@ -602,6 +631,66 @@
   <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
   
   
+    <script type="text/javascript" src="/plugins/live2d-widget.js/L2Dwidget.min.js"></script>
+<script type="text/javascript">
+  /**
+   * 完整配置请参考：https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html#instance-method-init
+   */
+  var pluginModelPath = "assets/", // 模型的文件路径，无需更改
+    pluginRootPath = "/live2d_models/"; // 插件的路径，无需更改
+  //特定的模型json文件名称
+  var modelPathJson = {
+    "epsilon2_1": "Epsilon2.1",
+    "gf": "Gantzert_Felixander",
+    "haru/01": "haru01",
+    "haru/02": "haru02",
+    "nietzsche": "nietzche"
+  }
+
+  
+    var modelName = "hibiki";
+  
+
+  var modelJsonPath = "";
+  if (modelPathJson[modelName]) {
+    modelJsonPath = pluginRootPath + modelName + "/" + pluginModelPath + modelPathJson[modelName] +
+      ".model.json";
+  } else {
+    modelJsonPath = pluginRootPath + modelName + "/" + pluginModelPath + modelName + ".model.json";
+  }
+  L2Dwidget.init({
+    model: {
+      jsonPath: modelJsonPath
+    },
+    display: {
+       position: "right", 
+       width: 145, 
+       height: 315, 
+       hOffset: 50, 
+      
+    },
+    mobile: {
+       show: false, 
+       scale: 0.6 
+    },
+    react: {
+       opacity: 0.8 
+    }
+  })
+
+</script>
+
+  
+  
+  <script type="text/javascript" src="/lib/snow.js"></script>
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <script>
+    snow.down();
+    $(window).resize(function() {
+      $("canvas").css("z-index","500").remove();
+      snow.down();
+    });
+  </script>
   
 </body>
 
