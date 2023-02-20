@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://programApeCode.github.io">
-  <title>程序猿茶社</title>
+  <title>移动端REM适配 | 程序猿茶社</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=""> -->
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="程序猿茶社">
-<meta property="og:url" content="http://programapecode.github.io/index.html">
+  <meta name="description" content="移动端 REM 适配Vant 中的样式默认使用 px 作为单位，如果需要使用 rem 单位，推荐使用以下两个工具：  postcss-pxtorem 是一款 postcss 插件，用于将单位转化为 rem lib-flexible 用于设置 rem 基准值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端REM适配">
+<meta property="og:url" content="http://programapecode.github.io/2023/02/20/%E7%A7%BB%E5%8A%A8%E7%AB%AFREM%E9%80%82%E9%85%8D/index.html">
 <meta property="og:site_name" content="程序猿茶社">
+<meta property="og:description" content="移动端 REM 适配Vant 中的样式默认使用 px 作为单位，如果需要使用 rem 单位，推荐使用以下两个工具：  postcss-pxtorem 是一款 postcss 插件，用于将单位转化为 rem lib-flexible 用于设置 rem 基准值">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="e:/2208P5P6/teacher/vue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9/%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89/assets/image-20200319104557718.png">
+<meta property="og:image" content="e:/2208P5P6/teacher/vue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9/%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89/assets/image-20200319105610557.png">
+<meta property="article:published_time" content="2023-02-20T08:51:14.000Z">
+<meta property="article:modified_time" content="2023-02-20T08:55:11.760Z">
 <meta property="article:author" content="Mr Li">
+<meta property="article:tag" content="技术笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="e:/2208P5P6/teacher/vue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9/%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89/assets/image-20200319104557718.png">
   
     <link rel="alternative" href="/atom.xml" title="程序猿茶社" type="application/atom+xml">
   
@@ -213,19 +217,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-移动端REM适配" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-移动端REM适配" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/02/20/%E7%A7%BB%E5%8A%A8%E7%AB%AFREM%E9%80%82%E9%85%8D/" target="_blank">移动端REM适配</a>
-  
+    <h1 class="article-title" itemprop="name">
+      移动端REM适配
     </h1>
   
 
@@ -239,6 +238,27 @@
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.4k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -250,103 +270,98 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/cuth/postcss-pxtorem">postcss-pxtorem</a> 是一款 postcss 插件，用于将单位转化为 rem</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/amfe/lib-flexible">lib-flexible</a> 用于设置 rem 基准值</li>
 </ul>
-    
-    <a class="article-more-a" href="/2023/02/20/%E7%A7%BB%E5%8A%A8%E7%AB%AFREM%E9%80%82%E9%85%8D/#more">more >></a>
-    
-    
+<span id="more"></span>下面我们分别将这两个工具配置到项目中完成 REM 适配。
 
-    
+<p><strong>一、使用 <a target="_blank" rel="noopener" href="https://github.com/amfe/lib-flexible">lib-flexible</a> 动态设置 REM 基准值（html 标签的字体大小）</strong></p>
+<p>1、安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yarn add amfe-flexible</span></span><br><span class="line">npm i amfe-flexible</span><br></pre></td></tr></table></figure>
 
-    
+<p>2、然后在 <code>main.js</code> 中加载执行该模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;amfe-flexible&#x27;</span></span><br></pre></td></tr></table></figure>
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">技术笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<p>最后测试：在浏览器中切换不同的手机设备尺寸，观察 html 标签 <code>font-size</code> 的变化。</p>
+<p>postcss  :  100</p>
+<p><strong>二、使用 <a target="_blank" rel="noopener" href="https://github.com/cuth/postcss-pxtorem">postcss-pxtorem</a> 将 <code>px</code> 转为 <code>rem</code></strong></p>
+<p>1、安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">yarn add -D postcss-pxtorem</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-D 是 --save-dev 的简写</span></span><br><span class="line">npm install postcss-pxtorem -D</span><br></pre></td></tr></table></figure>
 
-    
+<p>2、然后在<strong>项目根目录</strong>中创建 <code>.postcssrc.js</code> 文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;autoprefixer&#x27;</span>: &#123;</span><br><span class="line">      <span class="attr">browsers</span>: [<span class="string">&#x27;Android &gt;= 4.0&#x27;</span>, <span class="string">&#x27;iOS &gt;= 8&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&#x27;postcss-pxtorem&#x27;</span>: &#123;</span><br><span class="line">      <span class="attr">rootValue</span>: <span class="number">37.5</span>,</span><br><span class="line">      <span class="attr">propList</span>: [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/02/20/%E7%A7%BB%E5%8A%A8%E7%AB%AFREM%E9%80%82%E9%85%8D/">展开全文 >></a>
-    </p>
-    
+<p>3、<strong>配置完毕，重新启动服务</strong></p>
+<p>最后测试：<strong>刷新浏览器页面</strong>，审查元素的样式查看是否已将 <code>px</code> 转换为 <code>rem</code>。</p>
+<p><strong>需要注意的是：</strong></p>
+<ul>
+<li>该插件**不能转换行内样式中的 <code>px</code>**，例如 <code>&lt;div style=&quot;width: 200px;&quot;&gt;&lt;/div&gt;</code></li>
+</ul>
+<h2 id="关于-postcssrc-js-配置文件"><a href="#关于-postcssrc-js-配置文件" class="headerlink" title="关于 .postcssrc.js 配置文件"></a>关于 <code>.postcssrc.js</code> 配置文件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;autoprefixer&#x27;</span>: &#123;</span><br><span class="line">      <span class="attr">browsers</span>: [<span class="string">&#x27;Android &gt;= 4.0&#x27;</span>, <span class="string">&#x27;iOS &gt;= 8&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&#x27;postcss-pxtorem&#x27;</span>: &#123;</span><br><span class="line">      <span class="attr">rootValue</span>: <span class="number">37.5</span>,</span><br><span class="line">      <span class="attr">propList</span>: [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
+<p><code>.postcssrc.js</code> 是 PostCSS 的配置文件。</p>
+<p>（1）PostCSS 介绍</p>
+<p><a target="_blank" rel="noopener" href="https://postcss.org/">PostCSS</a> 是一个处理 CSS 的处理工具，本身功能比较单一，它主要负责解析 CSS 代码，再交由插件来进行处理，它的插件体系非常强大，所能进行的操作是多种多样的，例如：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/postcss/autoprefixer">Autoprefixer</a> 插件可以实现自动添加浏览器相关的声明前缀</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/csstools/postcss-preset-env">PostCSS Preset Env</a> 插件可以让你使用更新的 CSS 语法特性并实现向下兼容</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cuth/postcss-pxtorem">postcss-pxtorem</a> 可以实现将 px 转换为 rem</li>
+<li>…</li>
+</ul>
+<p>目前 PostCSS 已经有 <a target="_blank" rel="noopener" href="https://github.com/postcss/postcss/blob/master/docs/plugins.md">200 多个功能各异的插件</a>。开发人员也可以根据项目的需要，开发出自己的 PostCSS 插件。</p>
+<p>PostCSS 一般不单独使用，而是与已有的构建工具进行集成。</p>
+<p><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/css.html#postcss">Vue CLI 默认集成了 PostCSS</a>，并且默认开启了 <a target="_blank" rel="noopener" href="https://github.com/postcss/autoprefixer">autoprefixer</a> 插件。</p>
+<blockquote>
+<p>Vue CLI 内部使用了 PostCSS。</p>
+<p>你可以通过 <code>.postcssrc</code> 或任何 <a target="_blank" rel="noopener" href="https://github.com/michael-ciniawsky/postcss-load-config">postcss-load-config</a> 支持的配置源来配置 PostCSS。也可以通过 <code>vue.config.js</code> 中的 <code>css.loaderOptions.postcss</code> 配置 <a target="_blank" rel="noopener" href="https://github.com/postcss/postcss-loader">postcss-loader</a>。</p>
+<p>我们默认开启了 <a target="_blank" rel="noopener" href="https://github.com/postcss/autoprefixer">autoprefixer</a>。如果要配置目标浏览器，可使用 <code>package.json</code> 的 <a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/browser-compatibility.html#browserslist">browserslist</a> 字段。</p>
+</blockquote>
+<p>（2）Autoprefixer 插件的配置</p>
+<p><img src="E:/2208P5P6/teacher/vue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9/%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89/assets/image-20200319104557718.png" alt="image-20200319104557718"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/postcss/autoprefixer">autoprefixer</a> 是一个自动添加浏览器前缀的 PostCss 插件，<code>browsers</code> 用来配置兼容的浏览器版本信息，但是写在这里的话会引起编译器警告。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Replace Autoprefixer browsers option to Browserslist config.</span><br><span class="line">Use browserslist key in package.json or .browserslistrc file.</span><br><span class="line"></span><br><span class="line">Using browsers option can cause errors. Browserslist config</span><br><span class="line">can be used for Babel, Autoprefixer, postcss-normalize and other tools.</span><br><span class="line"></span><br><span class="line">If you really need to use option, rename it to overrideBrowserslist.</span><br><span class="line"></span><br><span class="line">Learn more at:</span><br><span class="line">https://github.com/browserslist/browserslist#readme</span><br><span class="line">https://twitter.com/browserslist</span><br></pre></td></tr></table></figure>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+<p>警告意思就是说你应该将 <code>browsers</code> 选项写到 <code>package.json</code> 或 <code>.browserlistrc</code> 文件中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Android]</span><br><span class="line">&gt;= 4.0</span><br><span class="line"></span><br><span class="line">[iOS]</span><br><span class="line">&gt;= 8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-
-
-  
-    <article id="post-vue-router使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/01/30/vue-router%E4%BD%BF%E7%94%A8/" target="_blank">vue-router使用</a>
-  
-    </h1>
-  
+<blockquote>
+<p>具体语法请<a target="_blank" rel="noopener" href="https://github.com/browserslist/browserslist">参考这里</a>。</p>
+</blockquote>
+<p>（3）postcss-pxtorem 插件的配置</p>
+<p><img src="E:/2208P5P6/teacher/vue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9/%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89/assets/image-20200319105610557.png" alt="image-20200319105610557"></p>
+<ul>
+<li><code>rootValue</code>：表示根元素字体大小，它会根据根元素大小进行单位转换</li>
+<li><code>propList</code> 用来设定可以从 px 转为 rem 的属性<ul>
+<li>例如 <code>*</code> 就是所有属性都要转换，<code>width</code> 就是仅转换 <code>width</code> 属性</li>
+</ul>
+</li>
+</ul>
+<p><code>rootValue</code> 应该如何设置呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果你使用的是基于 lib-flexable 的 REM 适配方案，则应该设置为你的设计稿的十分之一。</span><br><span class="line">例如设计稿是 750 宽，则应该设置为 75。</span><br></pre></td></tr></table></figure>
 
 
-  
-  
-<a href="/2023/01/30/vue-router%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-        <time datetime="2023-01-30T11:03:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-30</time>
-</a>
 
-  
-  
-    
+<p>大多数设计稿的原型都是以 iphone6 为原型，iphone6 设备的宽是 750，我们的设计稿也是这样。</p>
+<p>但是 Vant 建议设置为 37.5，为什么呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为 Vant 是基于 375 写的，所以如果你设置为 375 的话，Vant 的样式就小了一半。</span><br></pre></td></tr></table></figure>
 
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="vue-router使用"><a href="#vue-router使用" class="headerlink" title="vue-router使用"></a>vue-router使用</h1><h3 id="vue路由功能"><a href="#vue路由功能" class="headerlink" title="vue路由功能"></a>vue路由功能</h3><ol>
-<li>实现单页面的切换</li>
-<li>路由携带参数</li>
-<li>路由的导航守卫</li>
-<li>路由进行数据预载（进入组件前就请求获得数据）</li>
-</ol>
-<h3 id="路由模式（hash-h5-history）"><a href="#路由模式（hash-h5-history）" class="headerlink" title="路由模式（hash, h5 history）"></a><strong>路由模式（hash, h5 history）</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hash模式（默认） 例如：http://abc.com/#/user/10</span><br><span class="line">h5 history模式  例如：http://abc.com/user/20 需要server端支持</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a" href="/2023/01/30/vue-router%E4%BD%BF%E7%94%A8/#more">more >></a>
-    
+<p>所以如果设置为 <code>37.5</code> 的话，Vant 的样式是没有问题的，但是我们在测量设计稿的时候都必须除2才能使用，否则就会变得很大。</p>
+<p>这样做其实也没有问题，但是有没有更好的办法呢？我就想实现测量多少写多少（不用换算）。于是聪明的你就想，可以不可以这样来做？</p>
+<ul>
+<li>如果是 Vant 的样式，就把 <code>rootValue</code> 设置为 37.5 来转换</li>
+<li>如果是我们的样式，就按照 75 的 <code>rootValue</code> 来转换</li>
+</ul>
+<p>通过<a target="_blank" rel="noopener" href="https://github.com/cuth/postcss-pxtorem#options">查阅文档</a>我们可以看到 <code>rootValue</code> 支持两种参数类型：</p>
+<ul>
+<li>数字：固定值</li>
+<li>函数：动态计算返回<ul>
+<li>postcss-pxtorem 处理每个 CSS 文件的时候都会来调用这个函数</li>
+<li>它会把被处理的 CSS 文件相关的信息通过参数传递给该函数</li>
+</ul>
+</li>
+</ul>
+<p>所以我们修改配置如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * PostCSS 配置文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 配置要使用的 PostCSS 插件</span></span><br><span class="line">  <span class="attr">plugins</span>: &#123;</span><br><span class="line">    <span class="comment">// 配置使用 autoprefixer 插件</span></span><br><span class="line">    <span class="comment">// 作用：生成浏览器 CSS 样式规则前缀</span></span><br><span class="line">    <span class="comment">// VueCLI 内部已经配置了 autoprefixer 插件</span></span><br><span class="line">    <span class="comment">// 所以又配置了一次，所以产生冲突了</span></span><br><span class="line">    <span class="comment">// &#x27;autoprefixer&#x27;: &#123; // autoprefixer 插件的配置</span></span><br><span class="line">    <span class="comment">//   // 配置要兼容到的环境信息</span></span><br><span class="line">    <span class="comment">//   browsers: [&#x27;Android &gt;= 4.0&#x27;, &#x27;iOS &gt;= 8&#x27;]</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 配置使用 postcss-pxtorem 插件</span></span><br><span class="line">    <span class="comment">// 作用：把 px 转为 rem</span></span><br><span class="line">    <span class="string">&#x27;postcss-pxtorem&#x27;</span>: &#123;</span><br><span class="line">      rootValue (&#123; file &#125;) &#123;</span><br><span class="line">        <span class="keyword">return</span> file.<span class="title function_">indexOf</span>(<span class="string">&#x27;vant&#x27;</span>) !== -<span class="number">1</span> ? <span class="number">37.5</span> : <span class="number">75</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">propList</span>: [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配置完毕，把服务重启一下，最后测试。</p>
+
     
 
     
@@ -371,16 +386,24 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/01/30/vue-router%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-    </p>
-    
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/30/vue-router%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue-router使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -395,104 +418,33 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-解决端口被占用的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/01/28/%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank">解决端口被占用问题</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2023/01/28/%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2023-01-28T09:19:06.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-28</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="解决端口被占用问题"><a href="#解决端口被占用问题" class="headerlink" title="解决端口被占用问题"></a>解决端口被占用问题</h1><p>在项目开发过程中，会经常碰到端口被占用的问题，一般情况下，为解决端口冲突，会选择一个不常用的端口号进行测试，但是有时候测试过程中，会提示：Error: listen EADDRINUSE: address already in use :::3000/Error: listen EADDRINUSE: address already in use :::4000</p>
-<p>意思就是 3000/4000 端口被占用了，其实解决方案很简单。</p>
-<p><strong>解决方案：</strong></p>
-    
-    <a class="article-more-a" href="/2023/01/28/%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/01/28/%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF-REM-%E9%80%82%E9%85%8D"><span class="toc-number">1.</span> <span class="toc-text">移动端 REM 适配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-postcssrc-js-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">关于 .postcssrc.js 配置文件</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
 
-  
-  
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -520,8 +472,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
